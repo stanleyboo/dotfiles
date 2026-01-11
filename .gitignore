@@ -1,0 +1,109 @@
+# ===== Sensitive Files =====
+# SSH keys and config
+**/.ssh/
+**/ssh/
+
+# GPG keys
+**/.gnupg/
+
+# Credentials and tokens
+**/.credentials.json
+**/credentials.json
+**/*token*
+**/*secret*
+**/.netrc
+
+# Git credentials (if contains tokens)
+# Uncomment if your .gitconfig contains tokens:
+# git/.gitconfig
+
+# ===== Cache and State Files =====
+*.log
+*.cache
+**/.cache/
+**/cache/
+
+# Neovim state and plugins (regenerated on startup)
+nvim/.config/nvim/.luarc.json
+nvim/.config/nvim/lazy-lock.json
+**/.local/share/nvim/
+**/.local/state/nvim/
+
+# Shell history and state
+**/.bash_history
+**/.zsh_history
+**/.python_history
+**/fish_variables
+**/.lesshst
+**/.viminfo
+
+# ===== Application-Specific =====
+# VS Code
+**/Code/User/workspaceStorage/
+**/Code/User/globalStorage/
+**/Code/User/History/
+**/Code/CachedExtensions/
+**/Code/CachedExtensionVSIXs/
+**/Code/logs/
+**/Code/Backups/
+**/.vscode-server/
+
+# Claude Code (keep templates, exclude runtime data)
+**/.claude/cache/
+**/.claude/debug/
+**/.claude/downloads/
+**/.claude/file-history/
+**/.claude/history.jsonl
+**/.claude/paste-cache/
+**/.claude/plans/
+**/.claude/plugins/
+**/.claude/projects/
+**/.claude/session-env/
+**/.claude/shell-snapshots/
+**/.claude/stats-cache.json
+**/.claude/statsig/
+**/.claude/telemetry/
+**/.claude/todos/
+**/.claude/.credentials.json
+
+# Browser profiles (too large, contains sensitive data)
+**/.mozilla/
+**/.config/chromium/
+**/.config/google-chrome/
+**/.config/BraveSoftware/
+
+# KDE/Plasma state files
+**/akonadi*/
+**/*rc
+!**/.zshrc
+!**/.bashrc
+
+# ===== Build and Runtime =====
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.bak
+*.backup
+*.orig
+
+# Node modules (shouldn't be in dotfiles, but just in case)
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ===== OS-Specific =====
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*.lock
+.directory

@@ -1,0 +1,7 @@
+keymap:
+  - name: Emacs binding
+    remap:
+      C-j: left
+      C-l: right
+      C-i: up
+      C-k: down
