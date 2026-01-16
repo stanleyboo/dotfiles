@@ -77,7 +77,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "omarchy-launch-wifi"
+    "on-click": "xdg-terminal-exec -e wifi-picker"
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -105,7 +105,7 @@
     "format-connected": "󰂱",
     "format-no-controller": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "omarchy-launch-bluetooth"
+    "on-click": "blueman-manager"
   },
   "pulseaudio": {
     "format": "{icon}",
