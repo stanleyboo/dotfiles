@@ -1,14 +1,26 @@
-@import "../omarchy/current/theme/waybar.css";
+/* @import "../omarchy/current/theme/waybar.css"; */
 
 * {
-  background-color: @background;
+  background-color: transparent;
+  border: none;
+  border-radius: 80px;
+  padding: 2px;
   color: @foreground;
 
-  border: none;
-  border-radius: 0;
   min-height: 0;
   font-family: 'JetBrainsMono Nerd Font';
   font-size: 12px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 0 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
 }
 
 .modules-left {
@@ -25,6 +37,19 @@
   margin: 0 1.5px;
   min-width: 9px;
 }
+
+/* Workspace buttons targetting */ 
+#workspaces button {
+  color: white; 
+  padding: 0.5px;
+}
+
+/* Individual workspace colors */
+#workspaces button.1 { color: #0077ff; } /* Deep Blue */
+#workspaces button.2 { color: #00aaff; } /* Sky Blue */
+#workspaces button.3 { color: #00ccaa; } /* Teal/Cyan */
+#workspaces button.4 { color: #00ee77; } /* Mint Green */
+#workspaces button.5 { color: #00ff00; } /* Bright Green */
 
 #workspaces button.empty {
   opacity: 0.5;
@@ -57,7 +82,10 @@
 }
 
 tooltip {
-  padding: 2px;
+  padding: 8px;
+  margin-top: -10px;
+  background-color: @background;
+  border-radius: 8px;
 }
 
 #custom-update {
@@ -65,7 +93,7 @@ tooltip {
 }
 
 #clock {
-  margin-left: 8.75px;
+  margin-left: 5px;
 }
 
 .hidden {
@@ -81,6 +109,14 @@ tooltip {
 
 #custom-screenrecording-indicator.active {
   color: #a55555;
+}
+
+#language {
+    background: #313244; /* A dark grey color */
+    color: #cdd6f4;      /* White text */
+    padding: 0 10px;
+    margin: 0 5px;
+    border-radius: 5px;
 }
 
 #custom-voxtype {
