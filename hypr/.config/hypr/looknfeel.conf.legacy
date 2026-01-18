@@ -1,4 +1,5 @@
 # Change the default Omarchy look'n'feel
+# For Hyprland < 0.53
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {

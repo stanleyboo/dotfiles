@@ -1,0 +1,42 @@
+# Change the default Omarchy look'n'feel
+# For Hyprland >= 0.53
+
+# https://wiki.hyprland.org/Configuring/Variables/#general
+general {
+    # No gaps between windows or borders
+    gaps_in = 2.5
+    gaps_out = 5
+    # border_size = 0
+
+    # Use master layout instead of dwindle
+    # layout = master
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#decoration
+decoration {
+    # Use round window corners
+    # rounding = 8
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#animations
+# Very fast animations
+animations {
+    bezier = instant,0,0,0,1
+
+    animation = global, 1, 1, instant
+    animation = windows, 1, 1, instant
+    animation = windowsIn, 1, 1, instant, popin 95%
+    animation = windowsOut, 1, 0.5, instant, popin 95%
+    animation = fade, 1, 1, instant
+    animation = workspaces, 1, 1, instant, slide
+    animation = layers, 1, 1, instant
+}
+
+# https://wiki.hypr.land/Configuring/Dwindle-Layout/
+dwindle {
+    # Avoid overly wide single-window layouts on wide screens
+    # single_window_aspect_ratio = 1 1
+}
+
+# Disable transparency
+windowrule = opacity 0.925 0.925, match:class .*

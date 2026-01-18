@@ -1,2 +1,5 @@
-# Device-specific config (not tracked - copy from device.conf.linux or device.conf.windows)
+# Generated configs (created by stow.sh post_install based on Hyprland version)
+# Copy from .legacy or .modern templates
 device.conf
+windowrules.conf
+looknfeel.conf

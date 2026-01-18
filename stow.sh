@@ -16,6 +16,55 @@ get_packages() {
         -printf '%f\n' | sort
 }
 
+# Detect Hyprland version (returns "legacy" for <0.53, "modern" for >=0.53)
+get_hyprland_version_type() {
+    if command -v hyprctl &>/dev/null; then
+        version=$(hyprctl version 2>/dev/null | grep -oP 'Hyprland \K[0-9]+\.[0-9]+' | head -1)
+        if [ -n "$version" ]; then
+            major=$(echo "$version" | cut -d. -f1)
+            minor=$(echo "$version" | cut -d. -f2)
+            # 0.53+ uses modern syntax
+            if [ "$major" -gt 0 ] || ([ "$major" -eq 0 ] && [ "$minor" -ge 53 ]); then
+                echo "modern"
+                return
+            fi
+        fi
+    fi
+    # Default to legacy for older versions or if hyprctl not available
+    echo "legacy"
+}
+
+# Post-install setup for device-specific configs
+post_install() {
+    # Create hypr device.conf if it doesn't exist
+    if [ ! -f "$HOME/.config/hypr/device.conf" ]; then
+        echo "  Setting up hypr device.conf..."
+        if grep -q "microsoft\|WSL" /proc/version 2>/dev/null; then
+            # WSL/Windows - use ALT as mainMod
+            cp "$HOME/.config/hypr/device.conf.windows" "$HOME/.config/hypr/device.conf"
+            echo "    Created device.conf with mainMod=ALT (Windows/WSL detected)"
+        else
+            # Linux - use SUPER as mainMod
+            cp "$HOME/.config/hypr/device.conf.linux" "$HOME/.config/hypr/device.conf"
+            echo "    Created device.conf with mainMod=SUPER (Linux detected)"
+        fi
+    fi
+
+    # Setup version-specific Hyprland configs
+    version_type=$(get_hyprland_version_type)
+    echo "  Setting up Hyprland configs for $version_type syntax..."
+
+    if [ ! -f "$HOME/.config/hypr/windowrules.conf" ]; then
+        cp "$HOME/.config/hypr/windowrules.conf.$version_type" "$HOME/.config/hypr/windowrules.conf"
+        echo "    Created windowrules.conf ($version_type)"
+    fi
+
+    if [ ! -f "$HOME/.config/hypr/looknfeel.conf" ]; then
+        cp "$HOME/.config/hypr/looknfeel.conf.$version_type" "$HOME/.config/hypr/looknfeel.conf"
+        echo "    Created looknfeel.conf ($version_type)"
+    fi
+}
+
 case "$1" in
     install)
         echo "Installing all dotfiles packages..."
@@ -23,6 +72,7 @@ case "$1" in
             echo "  Stowing $pkg"
             stow -v "$pkg" 2>&1 | grep -v "^BUG" || true
         done
+        post_install
         echo "Done!"
         ;;
     uninstall)
@@ -39,6 +89,7 @@ case "$1" in
             echo "  Restowing $pkg"
             stow -R -v "$pkg" 2>&1 | grep -v "^BUG" || true
         done
+        post_install
         echo "Done!"
         ;;
     list)
