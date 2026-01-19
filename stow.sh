@@ -13,6 +13,7 @@ get_packages() {
         ! -name '.' \
         ! -name '.git' \
         ! -name 'scripts' \
+        ! -name '.*' \
         -printf '%f\n' | sort
 }
 
