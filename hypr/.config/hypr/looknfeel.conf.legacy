@@ -4,9 +4,13 @@
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
     # No gaps between windows or borders
-    gaps_in = 2.5
-    gaps_out = 5
-    # border_size = 0
+    gaps_in = 4
+    gaps_out = 8
+    border_size = 2
+
+    # Pink/purple theme colors
+    col.active_border = rgba(e8a0d0ff) rgba(d8b0e0ff) 45deg
+    col.inactive_border = rgba(5a306088)
 
     # Use master layout instead of dwindle
     # layout = master
@@ -39,4 +43,4 @@ dwindle {
 }
 
 # Disable transparency
-windowrule = opacity 0.925 0.925, class:.*
+windowrule = opacity 0.875 0.875, class:.*
