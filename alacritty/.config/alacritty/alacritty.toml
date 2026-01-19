@@ -1,4 +1,27 @@
-general.import = [ "~/.config/omarchy/current/theme/alacritty.toml" ]
+[colors.primary]
+background = "#2a1025"
+foreground = "#f8eef8"
+
+[colors.normal]
+black = "#2a1025"
+red = "#e8a0d0"
+green = "#d8b0e0"
+yellow = "#f090c0"
+blue = "#c8a0d8"
+magenta = "#e0b8e8"
+cyan = "#d0a0c8"
+white = "#f8eef8"
+
+[colors.bright]
+black = "#5a3060"
+red = "#f0c0e0"
+green = "#e8c8f0"
+yellow = "#e8a0d0"
+blue = "#d8c0e8"
+magenta = "#f0d0f0"
+cyan = "#e0b8d8"
+white = "#ffffff"
+
 [env]
 TERM = "xterm-256color"
 [font]
