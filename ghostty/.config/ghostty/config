@@ -1,10 +1,9 @@
 # Dynamic theme colors
 config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+config-file = ?"~/.config/ghostty/device.conf"
 
 # Font
-font-family = "JetBrainsMono Nerd Font"
-font-style = Regular
-font-size = 9
+# (device-specific in device.conf)
 
 # Window
 window-theme = ghostty

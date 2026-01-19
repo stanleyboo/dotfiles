@@ -50,6 +50,40 @@ post_install() {
         fi
     fi
 
+    # Create terminal device-specific font configs if they don't exist
+    if [ ! -f "$HOME/.config/alacritty/device.toml" ]; then
+        echo "  Setting up alacritty device.toml..."
+        if grep -q "microsoft\|WSL" /proc/version 2>/dev/null; then
+            cp "$HOME/.config/alacritty/device.toml.windows" "$HOME/.config/alacritty/device.toml"
+            echo "    Created device.toml (Windows/WSL detected)"
+        else
+            cp "$HOME/.config/alacritty/device.toml.linux" "$HOME/.config/alacritty/device.toml"
+            echo "    Created device.toml (Linux detected)"
+        fi
+    fi
+
+    if [ ! -f "$HOME/.config/kitty/device.conf" ]; then
+        echo "  Setting up kitty device.conf..."
+        if grep -q "microsoft\|WSL" /proc/version 2>/dev/null; then
+            cp "$HOME/.config/kitty/device.conf.windows" "$HOME/.config/kitty/device.conf"
+            echo "    Created device.conf (Windows/WSL detected)"
+        else
+            cp "$HOME/.config/kitty/device.conf.linux" "$HOME/.config/kitty/device.conf"
+            echo "    Created device.conf (Linux detected)"
+        fi
+    fi
+
+    if [ ! -f "$HOME/.config/ghostty/device.conf" ]; then
+        echo "  Setting up ghostty device.conf..."
+        if grep -q "microsoft\|WSL" /proc/version 2>/dev/null; then
+            cp "$HOME/.config/ghostty/device.conf.windows" "$HOME/.config/ghostty/device.conf"
+            echo "    Created device.conf (Windows/WSL detected)"
+        else
+            cp "$HOME/.config/ghostty/device.conf.linux" "$HOME/.config/ghostty/device.conf"
+            echo "    Created device.conf (Linux detected)"
+        fi
+    fi
+
     # Setup version-specific Hyprland configs
     version_type=$(get_hyprland_version_type)
     echo "  Setting up Hyprland configs for $version_type syntax..."

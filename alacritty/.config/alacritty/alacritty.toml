@@ -1,3 +1,6 @@
+[general]
+import = ["~/.config/alacritty/device.toml"]
+
 [colors.primary]
 background = "#2a1025"
 foreground = "#f8eef8"
@@ -24,11 +27,6 @@ white = "#ffffff"
 
 [env]
 TERM = "xterm-256color"
-[font]
-normal = { family = "JetBrains Mono", style = "Regular" }
-bold = { family = "JetBrains Mono", style = "Bold" }
-italic = { family = "JetBrains Mono", style = "Italic" }
-size = 9
 [window]
 padding.x = 14
 padding.y = 14
